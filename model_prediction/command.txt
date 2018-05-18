@@ -1,0 +1,21 @@
+Preprocess NCBI Data in Forward Directions:
+-------------------------------------------
+#Edite File Path
+python forward_annotated_test_sequence.py
+Output: dir_path/forward*
+python revcomp_annotated_test_sequence.py
+Output: dir_path/revcomp*
+
+Preprocess Forward/Revcomp Sequence to 101 Base Numbers:
+--------------------------------------------------------
+python whole_genome_test_dataset.py dir_path prefix
+Output: dir_path/whole_genome*.gz
+
+
+Predict Both the Forward and Reverse Complement Sequences:
+---------------------------------------------------------
+python floatpt_whole_genome_prediction.py whole_genome*.gz output_prefix
+Output: forward_output_prefix*.gz
+Output: revcomp_output_prefix*.gz
+
+

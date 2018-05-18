@@ -1,0 +1,24 @@
+Train for Start Codon Identification:
+-------------------------------------
+python general_lstm_start_classification.py start
+Output: Model and Statistics
+
+Train for Stop Codon Identification:
+-----------------------------------
+python general_lstm_stop_classification.py stop
+Output: Model and Statistics
+
+Train for Coding/Non-Coding Base Prediction:
+--------------------------------------------
+python general_lstm_gene_prediction.py start/stop codon
+Output: Model and Statistics
+
+Plot Training/Validation Accuracy:
+----------------------------------
+python create_training_plot.py model_stat_file start/stop
+Output: Training Plot
+
+Evaluate Training/Validation Data:
+----------------------------------
+python evaluate_codon_classification_network.py model_prefix_name start/stop 0.50
+Output: Accuracies

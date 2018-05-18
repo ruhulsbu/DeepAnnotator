@@ -1,0 +1,20 @@
+Preprocess NCBI Dataset
+-----------------------
+python genmark_annotated_train_sequence.py
+Output: batch_input*.gz
+
+Generate Start/Stop Training Dataset:
+-------------------------------------
+python bounded_start_stop_sequence.py batch_input*.gz
+Output: "coding_start/stop_codon.txt"
+Output: "intragenic_start/stop_codon.txt"
+Output: "gene_range_start/stop_codon.txt"
+
+Generate Protein Coding/Non-Coding Dataset:
+-------------------------------------------
+python coding_vs_noncoding_sequence.py batch_input*.gz
+Output: "coding_region_sequences.gz"
+Output: "intrag_region_sequences.gz"
+
+
+
