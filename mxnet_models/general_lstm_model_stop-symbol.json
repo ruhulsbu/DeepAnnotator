@@ -1,0 +1,220 @@
+{
+  "nodes": [
+    {
+      "op": "null", 
+      "name": "data", 
+      "inputs": []
+    }, 
+    {
+      "op": "slice_axis", 
+      "name": "source", 
+      "attrs": {
+        "axis": "1", 
+        "begin": "0", 
+        "end": "101"
+      }, 
+      "inputs": [[0, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "weight", 
+      "inputs": []
+    }, 
+    {
+      "op": "Embedding", 
+      "name": "vocab_embed_src", 
+      "attrs": {
+        "input_dim": "5", 
+        "output_dim": "4"
+      }, 
+      "inputs": [[1, 0, 0], [2, 0, 0]]
+    }, 
+    {
+      "op": "SwapAxis", 
+      "name": "swapaxes0", 
+      "attrs": {
+        "dim1": "0", 
+        "dim2": "1"
+      }, 
+      "inputs": [[3, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "lstm_src_parameters", 
+      "attrs": {"__init__": "[\"fusedrnn\", {\"init\": null, \"num_hidden\": 128, \"num_layers\": 1, \"mode\": \"lstm\", \"bidirectional\": true, \"forget_bias\": true}]"}, 
+      "inputs": []
+    }, 
+    {
+      "op": "_zeros", 
+      "name": "lstm_src_begin_state_0", 
+      "attrs": {
+        "__layout__": "LNC", 
+        "dtype": "float32", 
+        "shape": "(2, 0, 128)"
+      }, 
+      "inputs": []
+    }, 
+    {
+      "op": "_zeros", 
+      "name": "lstm_src_begin_state_1", 
+      "attrs": {
+        "__layout__": "LNC", 
+        "dtype": "float32", 
+        "shape": "(2, 0, 128)"
+      }, 
+      "inputs": []
+    }, 
+    {
+      "op": "RNN", 
+      "name": "lstm_src_rnn", 
+      "attrs": {
+        "bidirectional": "True", 
+        "mode": "lstm", 
+        "num_layers": "1", 
+        "p": "0.2", 
+        "state_outputs": "False", 
+        "state_size": "128"
+      }, 
+      "inputs": [[4, 0, 0], [5, 0, 0], [6, 0, 0], [7, 0, 0]]
+    }, 
+    {
+      "op": "SwapAxis", 
+      "name": "swapaxes1", 
+      "attrs": {
+        "dim1": "0", 
+        "dim2": "1"
+      }, 
+      "inputs": [[8, 0, 0]]
+    }, 
+    {
+      "op": "SwapAxis", 
+      "name": "swapaxes2", 
+      "attrs": {
+        "dim1": "0", 
+        "dim2": "1"
+      }, 
+      "inputs": [[9, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "lstm_tar_parameters", 
+      "attrs": {"__init__": "[\"fusedrnn\", {\"init\": null, \"num_hidden\": 128, \"num_layers\": 1, \"mode\": \"lstm\", \"bidirectional\": true, \"forget_bias\": true}]"}, 
+      "inputs": []
+    }, 
+    {
+      "op": "_zeros", 
+      "name": "lstm_tar_begin_state_0", 
+      "attrs": {
+        "__layout__": "LNC", 
+        "dtype": "float32", 
+        "shape": "(2, 0, 128)"
+      }, 
+      "inputs": []
+    }, 
+    {
+      "op": "_zeros", 
+      "name": "lstm_tar_begin_state_1", 
+      "attrs": {
+        "__layout__": "LNC", 
+        "dtype": "float32", 
+        "shape": "(2, 0, 128)"
+      }, 
+      "inputs": []
+    }, 
+    {
+      "op": "RNN", 
+      "name": "lstm_tar_rnn", 
+      "attrs": {
+        "bidirectional": "True", 
+        "mode": "lstm", 
+        "num_layers": "1", 
+        "p": "0.2", 
+        "state_outputs": "False", 
+        "state_size": "128"
+      }, 
+      "inputs": [[10, 0, 0], [11, 0, 0], [12, 0, 0], [13, 0, 0]]
+    }, 
+    {
+      "op": "SwapAxis", 
+      "name": "swapaxes3", 
+      "attrs": {
+        "dim1": "0", 
+        "dim2": "1"
+      }, 
+      "inputs": [[14, 0, 0]]
+    }, 
+    {
+      "op": "SliceChannel", 
+      "name": "split0", 
+      "attrs": {
+        "axis": "1", 
+        "num_outputs": "101", 
+        "squeeze_axis": "1"
+      }, 
+      "inputs": [[15, 0, 0]]
+    }, 
+    {
+      "op": "Reshape", 
+      "name": "reshape_lstm_src", 
+      "attrs": {"shape": "(1250, -1)"}, 
+      "inputs": [[16, 100, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "dense_net_weight", 
+      "attrs": {"num_hidden": "1"}, 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "dense_net_bias", 
+      "attrs": {"num_hidden": "1"}, 
+      "inputs": []
+    }, 
+    {
+      "op": "FullyConnected", 
+      "name": "dense_net", 
+      "attrs": {"num_hidden": "1"}, 
+      "inputs": [[17, 0, 0], [18, 0, 0], [19, 0, 0]]
+    }, 
+    {
+      "op": "null", 
+      "name": "label", 
+      "inputs": []
+    }, 
+    {
+      "op": "LogisticRegressionOutput", 
+      "name": "logistic", 
+      "inputs": [[20, 0, 0], [21, 0, 0]]
+    }
+  ], 
+  "arg_nodes": [0, 2, 5, 11, 18, 19, 21], 
+  "node_row_ptr": [
+    0, 
+    1, 
+    2, 
+    3, 
+    4, 
+    5, 
+    6, 
+    7, 
+    8, 
+    9, 
+    10, 
+    11, 
+    12, 
+    13, 
+    14, 
+    15, 
+    16, 
+    117, 
+    118, 
+    119, 
+    120, 
+    121, 
+    122, 
+    123
+  ], 
+  "heads": [[22, 0, 0]], 
+  "attrs": {"mxnet_version": ["int", 10000]}
+}
