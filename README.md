@@ -1,6 +1,7 @@
-# DeepAnnotator
+# DeepAnnotator (Will be Updated Next Week with Codebase and Dataset)
 
 python general_lstm_gene_prediction.py start/stop codon
+
 -->
 time python general_lstm_start_classification.py start > train_start_codon.txt &
 
