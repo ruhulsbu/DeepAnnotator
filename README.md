@@ -1,4 +1,4 @@
-# DeepAnnotator (Will be Updated on August 7, 2018 with Codebase and Dataset)
+# DeepAnnotator (Will be Updated on Sept 7, 2018 with Codebase and Dataset)
 
 python general_lstm_gene_prediction.py start/stop codon
 
