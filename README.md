@@ -1,4 +1,4 @@
-# DeepAnnotator (Will be Updated on Sept 7, 2018 with Codebase and Dataset)
+# DeepAnnotator: Deep Learning Methods for Genome Annotation 
 
 python general_lstm_gene_prediction.py start/stop codon
 
